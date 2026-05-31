@@ -38,22 +38,19 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-gradle-
     
-    - name: Make gradlew executable
-      run: chmod +x ./android/gradlew
-      continue-on-error: true
-    
-    - name: Generate Gradle Wrapper if missing
+    - name: Install Gradle
       run: |
-        cd android
-        if [ ! -f "gradlew" ]; then
-          gradle wrapper --gradle-version 8.0
-          chmod +x gradlew
-        fi
-    
+        sudo apt-get update
+        sudo apt-get install -y wget unzip
+        wget https://services.gradle.org/distributions/gradle-8.0-bin.zip
+        unzip gradle-8.0-bin.zip
+        sudo mv gradle-8.0 /opt/gradle
+        sudo ln -s /opt/gradle/bin/gradle /usr/local/bin/gradle
+        
     - name: Build Debug APK
       run: |
         cd android
-        ./gradlew assembleDebug
+        gradle assembleDebug
       env:
         ANDROID_HOME: ${{ env.ANDROID_HOME }}
     
