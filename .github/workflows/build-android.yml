@@ -47,9 +47,9 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y wget unzip
-        wget https://services.gradle.org/distributions/gradle-8.0-bin.zip
-        unzip gradle-8.0-bin.zip
-        sudo mv gradle-8.0 /opt/gradle
+        wget https://services.gradle.org/distributions/gradle-8.2-bin.zip
+        unzip gradle-8.2-bin.zip
+        sudo mv gradle-8.2 /opt/gradle
         sudo ln -s /opt/gradle/bin/gradle /usr/local/bin/gradle
         
     - name: Build Debug APK
