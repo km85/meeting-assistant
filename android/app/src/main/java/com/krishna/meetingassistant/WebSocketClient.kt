@@ -21,13 +21,23 @@ class WebSocketClient {
 
     companion object {
         private const val TAG = "WebSocketClient"
-        private const val BACKEND_URL = "ws://YOUR_SERVER_IP:8000/audio-stream"  // Ganti dengan IP server kamu
-        private const val HEALTH_URL = "http://YOUR_SERVER_IP:8000/health"  // Health check URL
+        private var serverIp: String = "178.62.216.144"
+        
+        private val backendUrl: String
+            get() = "ws://$serverIp:8000/audio-stream"
+        private val healthUrl: String
+            get() = "http://$serverIp:8000/health"
+        
         private const val PREFS_NAME = "meeting_assistant_prefs"
         private const val ANDROID_KEYSTORE = "AndroidKeyStore"
         private const val KEY_ALIAS = "backend_auth_token_key"
         private const val IV_PREF_KEY = "auth_token_iv"
         private const val ENCRYPTED_TOKEN_KEY = "auth_token_encrypted"
+
+        fun setServerIp(ip: String) {
+            serverIp = ip
+            Log.d(TAG, "Server IP set to: $ip")
+        }
 
         suspend fun testConnection(): String {
             return try {
@@ -35,11 +45,11 @@ class WebSocketClient {
                     .connectTimeout(5, TimeUnit.SECONDS)
                     .build()
                 val request = Request.Builder()
-                    .url("http://YOUR_SERVER_IP:8000/health")
+                    .url(healthUrl)
                     .build()
                 val response = client.newCall(request).execute()
                 if (response.isSuccessful) {
-                    "OK - Backend reachable"
+                    "OK - Backend reachable ($serverIp)"
                 } else {
                     "Error: ${response.code}"
                 }
@@ -66,7 +76,7 @@ class WebSocketClient {
                 .build()
 
             val request = Request.Builder()
-                .url(BACKEND_URL)
+                .url(backendUrl)
                 .addHeader("Authorization", "Bearer $authToken")
                 .addHeader("X-Session-ID", sessionId)
                 .build()

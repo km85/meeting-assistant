@@ -52,6 +52,10 @@ class MeetingService : Service() {
         sessionId = java.util.UUID.randomUUID().toString()
         Log.d("MeetingService", "Starting meeting session: $sessionId")
 
+        // Get server IP from intent
+        val serverIp = intent?.getStringExtra("server_ip") ?: "178.62.216.144"
+        WebSocketClient.setServerIp(serverIp)
+
         // Start foreground service with notification
         val notification = createNotification()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {

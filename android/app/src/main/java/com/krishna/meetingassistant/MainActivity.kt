@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -14,12 +15,14 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var ipInput: EditText
     private lateinit var statusText: TextView
     private lateinit var startButton: Button
     private lateinit var stopButton: Button
     private lateinit var testButton: Button
 
     private var isListening = false
+    private var currentIp: String = "178.62.216.144"
 
     companion object {
         private const val REQUEST_RECORD_AUDIO = 200
@@ -29,10 +32,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        ipInput = findViewById(R.id.ipInput)
         statusText = findViewById(R.id.statusText)
         startButton = findViewById(R.id.startButton)
         stopButton = findViewById(R.id.stopButton)
         testButton = findViewById(R.id.testButton)
+
+        // Load saved IP or default to server IP
+        val prefs = getSharedPreferences("meeting_assistant", MODE_PRIVATE)
+        val savedIp = prefs.getString("server_ip", "178.62.216.144")
+        ipInput.setText(savedIp)
 
         startButton.setOnClickListener { startListening() }
         stopButton.setOnClickListener { stopListening() }
@@ -47,8 +56,23 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
+        val ip = ipInput.text.toString().trim()
+        if (ip.isEmpty()) {
+            updateStatus("Error: Please enter server IP")
+            return
+        }
+
+        // Save IP to preferences
+        getSharedPreferences("meeting_assistant", MODE_PRIVATE)
+            .edit()
+            .putString("server_ip", ip)
+            .apply()
+
+        WebSocketClient.setServerIp(ip)
+
         val intent = Intent(this, MeetingService::class.java)
         intent.action = MeetingService.ACTION_START
+        intent.putExtra("server_ip", ip)
         ContextCompat.startForegroundService(this, intent)
 
         isListening = true
@@ -69,6 +93,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun testConnection() {
+        val ip = ipInput.text.toString().trim()
+        if (ip.isEmpty()) {
+            updateStatus("Error: Please enter server IP")
+            return
+        }
+
+        WebSocketClient.setServerIp(ip)
+
         lifecycleScope.launch {
             try {
                 val result = WebSocketClient.testConnection()
