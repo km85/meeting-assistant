@@ -27,6 +27,25 @@ class WebSocketClient {
         private const val KEY_ALIAS = "backend_auth_token_key"
         private const val IV_PREF_KEY = "auth_token_iv"
         private const val ENCRYPTED_TOKEN_KEY = "auth_token_encrypted"
+
+        suspend fun testConnection(): String {
+            return try {
+                val client = OkHttpClient.Builder()
+                    .connectTimeout(5, TimeUnit.SECONDS)
+                    .build()
+                val request = Request.Builder()
+                    .url("http://YOUR_SERVER_IP:8000/health")
+                    .build()
+                val response = client.newCall(request).execute()
+                if (response.isSuccessful) {
+                    "OK - Backend reachable"
+                } else {
+                    "Error: ${response.code}"
+                }
+            } catch (e: Exception) {
+                "Error: ${e.message}"
+            }
+        }
     }
 
     private var webSocket: WebSocket? = null
@@ -197,28 +216,4 @@ class WebSocketClient {
         keyGenerator.generateKey()
     }
 
-    companion object {
-        suspend fun testConnection(): String {
-            return try {
-                val client = OkHttpClient.Builder()
-                    .connectTimeout(5, TimeUnit.SECONDS)
-                    .build()
-                val request = Request.Builder()
-                    .url("http://YOUR_SERVER_IP:8000/health")
-                    .build()
-                val response = client.newCall(request).execute()
-                if (response.isSuccessful) {
-                    "OK - Backend reachable"
-                } else {
-                    "Error: ${response.code}"
-                }
-            } catch (e: Exception) {
-                "Error: ${e.message}"
-            }
-        }
-    }
-}
-
-private fun ByteArray.toRequestBody(): RequestBody {
-    return RequestBody.create(null, this)
 }
