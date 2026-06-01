@@ -6,6 +6,7 @@ import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import android.util.Base64
 import android.util.Log
+import okio.ByteString.Companion.toByteString
 import kotlinx.coroutines.*
 import okhttp3.*
 import okhttp3.WebSocket
@@ -127,7 +128,7 @@ class WebSocketClient {
             Log.w(TAG, "Not connected, dropping audio chunk")
             return
         }
-        webSocket?.send(okio.ByteString.of(*audioChunk))
+        webSocket?.send(audioChunk.toByteString())
     }
 
     fun disconnect() {
