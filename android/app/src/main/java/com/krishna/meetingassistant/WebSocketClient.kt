@@ -127,7 +127,7 @@ class WebSocketClient {
             Log.w(TAG, "Not connected, dropping audio chunk")
             return
         }
-        webSocket?.send(okio.ByteString.of(java.nio.ByteBuffer.wrap(audioChunk)))
+        webSocket?.send(okio.ByteString.of(*audioChunk))
     }
 
     fun disconnect() {
