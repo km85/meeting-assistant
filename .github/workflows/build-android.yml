@@ -55,9 +55,9 @@ jobs:
     - name: Build Debug APK
       run: |
         cd android
-        # Download and use Gradle directly
-        export GRADLE_USER_HOME=$HOME/.gradle
-        gradle assembleDebug --no-daemon -Dorg.gradle.jvmargs="-Xmx4g"
+        export ANDROID_HOME=$ANDROID_HOME
+        export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools
+        gradle assembleDebug --stacktrace --info
     
     - name: Upload APK
       uses: actions/upload-artifact@v4
