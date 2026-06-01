@@ -127,7 +127,7 @@ class WebSocketClient {
             Log.w(TAG, "Not connected, dropping audio chunk")
             return
         }
-        webSocket?.send(audioChunk.toRequestBody())
+        webSocket?.send(RequestBody.create(null, audioChunk))
     }
 
     fun disconnect() {
