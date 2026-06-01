@@ -27,6 +27,11 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     
+    - name: Fix apt repositories
+      run: |
+        sudo rm -f /etc/apt/sources.list.d/google-chrome.list
+        sudo apt-get update || true
+    
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
       with:
@@ -45,6 +50,7 @@ jobs:
     
     - name: Install Gradle
       run: |
+        sudo rm -f /etc/apt/sources.list.d/google-chrome.list
         sudo apt-get update
         sudo apt-get install -y wget unzip
         wget https://services.gradle.org/distributions/gradle-8.2-bin.zip
