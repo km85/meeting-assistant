@@ -63,7 +63,11 @@ jobs:
         cd android
         export ANDROID_HOME=$ANDROID_HOME
         export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools
+        # Accept all SDK licenses automatically before building
+        yes | sdkmanager --licenses || true
         gradle assembleDebug --stacktrace --info
+      env:
+        ANDROID_HOME: ${{ env.ANDROID_HOME }}
     
     - name: Upload APK
       uses: actions/upload-artifact@v4
