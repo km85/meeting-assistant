@@ -32,13 +32,14 @@ class MeetingService : Service() {
     private val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private var webSocketClient: WebSocketClient? = null
     private var sessionId: String = ""
-
+    private var lastIntent: Intent? = null
     override fun onCreate() {
         super.onCreate()
         createNotificationChannel()
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        lastIntent = intent
         when (intent?.action) {
             ACTION_START -> startMeeting()
             ACTION_STOP -> stopMeeting()
@@ -53,7 +54,7 @@ class MeetingService : Service() {
         Log.d("MeetingService", "Starting meeting session: $sessionId")
 
         // Get server IP from intent
-        val serverIp = intent?.getStringExtra("server_ip") ?: "178.62.216.144"
+        val serverIp = lastIntent?.getStringExtra("server_ip") ?: "178.62.216.144"
         WebSocketClient.setServerIp(serverIp)
 
         // Start foreground service with notification
