@@ -10,6 +10,9 @@ class Settings(BaseSettings):
     openai_api_key: str = ""
     openai_model: str = "gpt-4o-mini"  # Fast & cheap for MVP
     
+    # Kimi (optional fallback)
+    kimi_api_key: str = ""
+    
     # Telegram
     telegram_bot_token: str = ""
     telegram_chat_id: str = "134036214"
@@ -18,9 +21,16 @@ class Settings(BaseSettings):
     host: str = "0.0.0.0"
     port: int = 8000
     
+    # Security
+    backend_auth_token: str = ""
+    
     # Session
     max_buffer_minutes: int = 60
     transcript_max_lines: int = 500
+    
+    # Storage toggles
+    transcript_storage_enabled: bool = False
+    raw_audio_storage_enabled: bool = False
     
     class Config:
         env_file = ".env"
