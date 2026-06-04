@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: meeting-assistant
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+    environment:
+      - QDRANT_HOST=qdrant
+      - QDRANT_PORT=6333
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - qdrant
+    networks:
+      - meeting-network
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: meeting-qdrant
+    restart: unless-stopped
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant-storage:/qdrant/storage
+    networks:
+      - meeting-network
+
+networks:
+  meeting-network:
+    driver: bridge
+
+volumes:
+  qdrant-storage:
