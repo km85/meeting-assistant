@@ -35,12 +35,17 @@ class WebSocketClient {
         private const val ENCRYPTED_TOKEN_KEY = "auth_token_encrypted"
 
         fun setServerIp(ip: String) {
-            serverIp = ip
-            Log.d(TAG, "Server IP set to: $ip")
+            // Strip protocol (http://, https://, ws://) if present
+            var cleanIp = ip.replace(Regex("^https?://"), "")
+            cleanIp = cleanIp.replace(Regex("^ws://"), "")
+            // Strip port if present (e.g., 72.61.214.107:8000 → 72.61.214.107)
+            cleanIp = cleanIp.split(":")[0]
+            serverIp = cleanIp
+            Log.d(TAG, "Server IP set to: $cleanIp (from input: $ip)")
         }
 
-        suspend fun testConnection(): String {
-            return try {
+        suspend fun testConnection(): String = withContext(Dispatchers.IO) {
+            try {
                 val client = OkHttpClient.Builder()
                     .connectTimeout(5, TimeUnit.SECONDS)
                     .build()
@@ -54,7 +59,7 @@ class WebSocketClient {
                     "Error: ${response.code}"
                 }
             } catch (e: Exception) {
-                "Error: ${e.message}"
+                "Error: ${e.message ?: e.javaClass.simpleName}"
             }
         }
     }
@@ -66,7 +71,8 @@ class WebSocketClient {
 
     fun connect(sessionId: String): Boolean {
         return try {
-            val authToken = getAuthToken() ?: return false
+            // Auth token optional for MVP/debug - skip if not available
+            val authToken = getAuthToken()
 
             client = OkHttpClient.Builder()
                 .connectTimeout(10, TimeUnit.SECONDS)
@@ -75,11 +81,16 @@ class WebSocketClient {
                 .pingInterval(20, TimeUnit.SECONDS)
                 .build()
 
-            val request = Request.Builder()
+            val requestBuilder = Request.Builder()
                 .url(backendUrl)
-                .addHeader("Authorization", "Bearer $authToken")
                 .addHeader("X-Session-ID", sessionId)
-                .build()
+            
+            // Only add auth header if token exists
+            if (authToken != null) {
+                requestBuilder.addHeader("Authorization", "Bearer $authToken")
+            }
+            
+            val request = requestBuilder.build()
 
             val listener = object : WebSocketListener() {
                 override fun onOpen(webSocket: WebSocket, response: Response) {
