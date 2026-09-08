@@ -1,21 +1,8 @@
 import asyncio
-import os
 import time
 from collections import deque
 from typing import Optional
 from dataclasses import dataclass, field
-
-
-TRANSCRIPT_DIR = os.environ.get("TRANSCRIPT_DIR", "/app/transcripts")
-
-
-def _ensure_dir(path: str):
-    os.makedirs(path, exist_ok=True)
-
-
-def _format_timestamp(ts: float) -> str:
-    from datetime import datetime, timezone
-    return datetime.fromtimestamp(ts, tz=timezone.utc).strftime("%Y-%m-%d_%H-%M-%S")
 
 
 @dataclass
@@ -23,6 +10,7 @@ class TranscriptEntry:
     text: str
     timestamp: float = field(default_factory=time.time)
     is_final: bool = True
+    speaker: Optional[str] = None
 
 
 class Session:
@@ -35,10 +23,7 @@ class Session:
         self.metadata = {
             "audio_chunks_received": 0,
             "transcript_entries": 0,
-            "websocket_connected": 0,
-            "websocket_disconnected": 0,
         }
-        self.active_project_id: Optional[str] = None
     
     def add_transcript(self, text: str, is_final: bool = True):
         entry = TranscriptEntry(text=text, is_final=is_final)
@@ -65,44 +50,13 @@ class Session:
             "question", "ask", "confirm", "clarify"
         ]
         
+        # Search from newest to oldest
         for entry in reversed(self.transcript):
             text_lower = entry.text.lower()
             if any(ind in text_lower for ind in question_indicators):
                 return entry.text
         
         return None
-    
-    def save_transcript(self) -> Optional[str]:
-        """Save full transcript to disk. Returns file path if saved."""
-        if not self.transcript:
-            return None
-        
-        _ensure_dir(TRANSCRIPT_DIR)
-        
-        date_str = _format_timestamp(self.created_at)
-        filename = f"{date_str}_{self.session_id[:8]}.txt"
-        filepath = os.path.join(TRANSCRIPT_DIR, filename)
-        
-        lines = []
-        lines.append(f"# Meeting Transcript")
-        lines.append(f"Session ID: {self.session_id}")
-        lines.append(f"Created: {date_str}")
-        lines.append(f"Duration: {int(time.time() - self.created_at)}s")
-        lines.append(f"Entries: {len(self.transcript)}")
-        lines.append(f"Project: {self.active_project_id or 'None'}")
-        lines.append("")
-        lines.append("---")
-        lines.append("")
-        
-        for entry in self.transcript:
-            prefix = "[FINAL]" if entry.is_final else "[INTERIM]"
-            lines.append(f"{prefix} {entry.text}")
-        
-        with open(filepath, "w", encoding="utf-8") as f:
-            f.write("\n".join(lines))
-        
-        print(f"Transcript saved: {filepath}")
-        return filepath
     
     def stop(self):
         self.is_active = False
@@ -115,7 +69,6 @@ class Session:
             "last_activity": self.last_activity,
             "transcript_count": len(self.transcript),
             "metadata": self.metadata,
-            "active_project_id": self.active_project_id,
         }
 
 
@@ -139,9 +92,8 @@ class SessionManager:
     
     def end_session(self, session_id: str) -> bool:
         if session_id in self.sessions:
-            session = self.sessions[session_id]
-            session.save_transcript()
-            session.stop()
+            self.sessions[session_id].stop()
+            # Keep transcript briefly for /recap after stop, then clean up
             return True
         return False
     

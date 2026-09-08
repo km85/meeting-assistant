@@ -7,11 +7,12 @@ from deepgram import (
     DeepgramClient,
     LiveTranscriptionEvents,
     LiveOptions,
+    Microphone,
 )
 
-from app.config import get_settings
-from app.session_manager import session_manager
-from app.security import log_audit
+from config import get_settings
+from session_manager import session_manager
+
 
 settings = get_settings()
 
@@ -21,18 +22,18 @@ class DeepgramSTT:
     
     def __init__(self):
         self.client = DeepgramClient(settings.deepgram_api_key)
-        self.connections: dict[str, any] = {}
+        self.connections: dict[str, any] = {}  # session_id -> connection
     
     async def start_stream(self, session_id: str) -> Optional[any]:
         """Start a new Deepgram streaming connection."""
         try:
-            dg_connection = self.client.listen.asyncwebsocket.v("1")
+            dg_connection = self.client.listen.websocket.v("1")
             
             # Event handlers
-            async def on_open(self, open, **kwargs):
+            def on_open(self, open, **kwargs):
                 print(f"Deepgram connection opened for session {session_id}")
             
-            async def on_message(self, result, **kwargs):
+            def on_message(self, result, **kwargs):
                 transcript = result.channel.alternatives[0].transcript
                 if transcript.strip():
                     is_final = result.is_final
@@ -41,10 +42,10 @@ class DeepgramSTT:
                         session.add_transcript(transcript, is_final=is_final)
                         print(f"[{'FINAL' if is_final else 'INTERIM'}] {transcript}")
             
-            async def on_close(self, close, **kwargs):
+            def on_close(self, close, **kwargs):
                 print(f"Deepgram connection closed for session {session_id}")
             
-            async def on_error(self, error, **kwargs):
+            def on_error(self, error, **kwargs):
                 print(f"Deepgram error for session {session_id}: {error}")
             
             dg_connection.on(LiveTranscriptionEvents.Open, on_open)
@@ -55,14 +56,14 @@ class DeepgramSTT:
             # Configure options
             options = LiveOptions(
                 model="nova-2",
-                language="id",  # Indonesian support
+                language="en",
                 smart_format=True,
                 encoding="linear16",
                 sample_rate=16000,
                 channels=1,
                 interim_results=True,
                 punctuate=True,
-                endpointing=500,
+                endpointing=500,  # 500ms silence = utterance end
             )
             
             # Start connection

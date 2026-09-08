@@ -1,0 +1,300 @@
+Halo Halo Halo Halo
+halo halo halo halo halo halo halo halo halo halo halo halo halo
+Halo
+Oke, akhirnya sudah terdengar
+Jadi hari ini kita mau meeting sama MSC
+MSC itu partnernya Permata
+partnernya kita mereka yang
+Do the heavy lifting untuk Project Permata
+mereka yang persiapkan email, create account, guard
+rail, even ngodingngodingnya Nah kita mau tanya dulu statusnya sama mereka
+Iya betul
+Oke
+Kita masih menunggu
+temanteman dari MSI
+Aku panggil dulu mereka
+Cari masih tunggu
+Halo halo mas
+Halo selamat pagi
+Bentar ya
+MSC lagi OTW
+Halo Mel
+Halo halo
+Halo Mbak Andrew sebagai karya
+memang suara tanda kecil tapi tadi
+masuk di undang juga kan ya?
+Gua ajakny juga
+Hai salam
+Aku udah ambil di kereta ya
+mas
+mas, iya oke
+dari? Mulai aja kali ya?
+Ya? Iya, kayaknya masih ada missing live
+juga nanti paling dari apa?
+Oke oke ya yang membuat silakan Mel
+Halo
+Iya, ini maksudnya langsung update progress aja kak yang
+sudah kita lakukan Update progress, terus kalau ada pertanyaan
+terus apa, nextnya apa?
+Oke jadi dari hari
+Selasa ya kita itu lagi coba untuk
+define lah dari decision register dokumennya
+itu ceklisnya aman aja yang dan mana aja yang
+not upticable di project ini. Itu mungkin
+dari masalah ya, mana tuh ada beberapa poin mas, ada 4 kalau nggak salah.
+4 poin itu yang nantinya
+kita mau coba lakukan dilanjutin di hari ini
+Dari Mas Alam ada info detailnya ada 4 poin lah.
+4 poin itu sebetulnya yang udah gua udah
+backendes, Now, itu sebetulnya termasuk pertanyaan itu
+pertanyaan
+yang lu lakukan terkait
+dan udah dicoba udah bisa
+tinggal di apply di
+rumah sakit gitu Nah yang kedua ini pertanyaan sih
+Pertanyaan yang pertama itu nanti strategi
+Saya cuman konsol nya biar lewat
+public print nya itu
+itu seperti apa apa, schedule dari Permata belum
+tau, saya juga belum tau strateginya, mungkin
+apa yang di setting, terus apakah semua
+termasuk yang user pun bakal
+terkena itu juga harus lewat
+omset lah untuk website karena kemarin udah ada pertanyaan
+jadi calon manajemen konsernya kalau pake public thing
+play Nah untuk yang tri Blast itu berapa akal juga atau nggak gitu
+Kalo kalo Bridgest Glass kan konteksnya untuk MRGL suka
+Pertama itu yang kedua
+SMS yang
+pop up, storage rapid to coctions punya ellezar
+Itu kan udah jadi tower
+di dalam bentuk infreksinya gitu
+Nah kalau kita taruh elkrensinya ketika baca
+tadi kita
+kalau default, ternyata nanti bakal jadi apa ya
+belajar
+Tapi ada cara lain dengan cara bithyrov
+MS yang central gitu yang bisa diupgrade
+satu organisasi. Nah pertanyaannya paling
+Sebut dulu base practice nya itu
+harus di upgrade atau nggak nih, SLS yang oleh Dyson
+katakan typenya ternyata nggak di MT
+Itu dua aja sih pertanyaan Yang dua sisanya yang privasi
+2 sisanya yang
+Itu smnail
+pertanyaan
+Oke berarti oke mungkin satusatu ya jadi ada
+bagian infrastructure, ada bagian yang security. Jadi saya mungkin mulai dengan yang bagian
+infrastruktur dulu. Jadi untuk
+ini orang akses ke konsolnya WS melewati dari
+connect itu udah biasa banget masalah kalo misalnya perlu apa yang
+dikerjakan nanti saya bisa kasih bikin dokumen sedikit kecil
+untuk bagaimana cara mensetup dari bagian mereka sama
+sama yang di NAWALS sih gampang
+tinggal bikin public live aja mereka mesti bikin satu villain lagi untuk
+untuk publictif itu doang sih masalah cuman sekarang masalahnya
+pada saat kita buka
+public 5, kita buka public 5. Nggak usah
+di stop lah. Ini kan semuanya akan kebuka ya termasuk Esti termasuk
+Dynamo TV itu semua kebuka itu akan banyak
+apa namanya
+Prefix BGP
+traffic yang akan dilempar dari AWS ke Permata
+Banyak banget. Itu sampai sekitar 5000 traffic. Masalah
+sekarang masalahnya tinggal apakah mereka mau
+filter apa nggak itu jadi kalau mereka mau filter maka filter aja
+dibagian mereka karena kalau di internet kan semua udah ter
+terekspos ya kalau mereka lewat internet tapi kalau lewat
+dari connect itu akan di expose semua prediksnya AWF
+berarti kan kita bisa misalnya mereka itu bisa
+filter tanya Indonesia aja jadi semua
+page in the cuman satu region Jakarta aja
+seluruh region Jakarta aja akan diterima oleh routernya
+dari bumper mata yang lainnya nggak usah diambil toh
+mereka nggak perlu yang region yang lain kan misalnya gitu
+jadi itu preferorusnya itu akan di cuma itu aja sih salah satu
+akibatnya kalau mau pakai lewat dari connect
+tapi saya kasih deh itunya ada stepstepnya
+tapi musti dikerjain tapi maksudnya sih kalau masalah baca di internet juga banyak
+kok itu informasi itu misalnya di
+kita punya satu website yang kumpulan dari semua
+konfigurasi itu apa ya kalau pak Gugan Awesome solution
+AES, Preskriptif Guide lainnya atau ngitung
+nggak salah. Ada kok masalah. Tinggal ikutin itu aja.
+Terus ditelan ke mereka tapi yang pasti satu hal
+public tips yang mesti dipikirkan
+public
+kayak yang
+Iya Young User lah, yang backlash ini berarti harus lewat
+ini juga, public Glass juga dah, bang. Nah,
+makanya sekarang break glass kan karena break glass itu kan
+tujuannya bukan untuk network
+misalkan network ada masalah gitu kan ini kan pertanyaan mereka adalah
+kalau tibatiba network ada masalah terus harus pakai break glass nggak bisa kan
+Jadinya kan? Ngerti kan? Nah, itu kan masalahnya mereka dong. Kalau mereka
+misalnya mau bikin supaya berikan sialan dan network nya lagi gantung lagi turun mereka harus lewati internet
+mustinya nggak ada pilihan sih iya kan? Iya udah nggak?
+Untuk, trigger nggak keimpact aja meskipun
+ini dienakan asik ya? Nggak kan, Freiglas tetep
+mereka akan lewat jalur yang sama. Makanya waktu itu kan pertanyaan nya ke mas tuh kan
+gimana kalau beriklan semua, user akses semua lewat
+direct connect nah kita bikin kalau mereka mau begitu dari segi
+infrastrukturnya mereka harus bikin public fee, udah ready doang.
+Sisanya nanti semua akses ke
+ke konsul termasuk break glass
+apapun itu itu akan lewat tidak ada reconnect, belum pasti.
+Tapi ingetinget kalau dari leher putus, berarti mereka nggak bisa
+even gritte pun nggak bisa ya jadinya ya
+berarti semua ya, nggak minta di Kanye
+Freeglads, Freeglads, Freeglads, Freeglads,
+pabrik.
+Bisa nggak? Iya misalnya di BGP nya di filter
+yang AM kalau masuk dimasukin cuma gini, kalau mau ngomong
+prosedur pakai preglasnya di
+kecuali kan jadi prosedur pakai preglas ya jangan pakai network
+nya permata pakai aja tethering
+Berarti sebetulnya dari
+rumah pun bisa kayak yang saya rasain
+Ya bisa lagi enak ya. Selama bisa akses konsol.
+Dari netapun ga masuk, sebenernya ga masuk. Dari netapun itu kan sebenernya tergantung
+dari policy nya, I am policy nya katakanlah
+kan
+kita memang membatasi I am user yang
+user, service account kita batasi terus kemudian
+SSO rule kan kita batasi policynya, hanya IPB
+nya terbatas. Kan ada pengecualian dong, harusnya back
+kalau yang breakles harusnya nggak boleh digituin kalau nggak
+dari koneksi yang bermasalah, yang saya pake Iya bener
+Berarti ini waktu big nya
+policy kan ini ada kondisi normal gitu kan? Iya betul
+Tapi emang oscar sih ga dikasih sih.
+Berarti kalau yang lewat public figure itu
+untuk sertifikat service
+misalnya di sini ada PCMISE terus ada
+aja nya apa ya prepetin gitu kan
+kita buka dari manajemen konsol dari internet kan sekarang bisa nih
+nih nantinya mereka harus buka lewat
+barang dari
+Iya benar Iya itu sebenarnya memang policy mereka sih kan ya
+ya, tapi ya didalam laptop mereka
+mesti pastiin bahwa semua yang aksesnya ke dot
+.alas.com atau apapun itu lah gitu kan itu harus melewati
+routernya yang ke directconnect kan. Mestinya itu kan udah
+dibedain, udah nggak melewati jalur internet mereka jadinya.
+Itu kan harus diganti juga di on Premier
+bener nggak? Iya kan?
+Ya diganti dengan PM dan jangan sampai kelewat juga kalau dia
+misalkan VPN dari rumah, pake split tunnel apa enggak?
+Kalau pakai split tunnel dia bisa coba kabur itu
+iya benar oke pada dasarnya policy nya itu harus
+di definit oleh mereka di on prime network mereka semua policy baik
+security maupun network itu harus mereka yang divine jadi mereka benarbenar mengunci
+semua akses itu harus melewati dari connect gitu loh, masalah itu lebih
+sebenarnya bagian itu lebih susah lagi di mereka dibandingin kita
+gampanggampang aja masalah konfigurasi kita
+ya itu yang lebih susah kan ngunci semua
+pintu dikunciin semua hanya bisa lewat buka satu pintu kan gitu itu yang paling susah kan
+sebenarnya itu kan mereka pasti berantem sana
+berantem sini tuh orang implementasi networknya
+sama security dan sebagainya, ya kan? Jadi itu yang mesti disadarkan kemarin
+mereka sebenarnya
+kitanya gampang, oh saya bilang yang kita mau bikin itu gampang
+gampang
+kalau ininya
+SLS, customer tuh di semua pun, terus
+saat ini kan udah muter NTIP, nah kalo EARABLE NTIP,
+kan adanya default, jadi mau gak mau harus bikin games baru kan ya yang
+bisa diakses organisasi gitu. Tapi pertanyaannya gini sih,
+best practice nya itu perlu di endfield nggak ya?
+Kalau untuk yang landing zone,
+sebaiknya nggak karena itu pertama ada dua kan yang bawaan dari control tower
+gak ada engkelep dan kita gak bisa
+jadi yang untuk orang yang itu tebakan nggak usah
+dari travelspot yang itu ya, pajang juga ya
+itu cross account kan? Itu kan dari semua account.
+Account dan ya bisa sih cuma agak ribet
+dan yang nggak bisa adalah yang punyanya control tower
+Itu harus diganti yang
+0.0.
+Pasternya diganti ke Metr nya lebih instastenya
+Oh ya, yang si MT nanti akan ada
+ngambil lognya SIMP kan ya. Itu
+kalo aku liat berarti dia bikin
+episode lah ya, yang di akun Lock artife
+betul bikin
+saya research on di lombakan dan bikin
+SqS juga di local card
+Buat tertariktarik
+Di scregle kalo nggak salah udah ada contohnya kan
+Ada? Ada,
+Apalagi ya, tapi
+Kemarin ada nanya tentang
+itu untuk cartridge di tahun nya dimana
+kalo sebaiknya di security account yang
+modelnya third party tools
+sebaiknya the spirit account
+apalagi ya
+ya akhirnya untuk yang model security sih udah mulai list ya udah mulai
+paham lah di
+Public fit itu sama Inggris kan
+biasanya kita kalau mau bukain backsound pake yang
+start itu kan yang udah strip berapa
+terus AW tapi EPS.
+Nah itu bakal di restart juga
+hanya dari public street nya Permata
+atau itu dari internet
+Sama, itu nanti jatuhnya ke public web juga. Jadi
+itu kan nanti AWPS
+kan awesome.com nanti diarahkan lewat public flip kan?
+Tapi kan tergantung routingnya mereka
+ya? Iya routing dalem ya kan mas Anang Balik lagi ke
+lagilagi kan
+dari Kalau dari Ternyata dari rumah
+aku buka yang KWTA itu
+itu tetep kita atau nanti kena ini
+kagak connect gitu tergantung itu nanti VPN nya berbatu
+apakah split tunnel atau nggak dan split tunnel kan ada rules nya
+domain apa yang displit, domain apa yang tetap harus lewat
+dan
+kalau benarbenar internet tethering pakai provider masingmasing mah
+ya bisabisa aja masalah karena itu bukan networknya
+permata lagi kan itu udah internet kan, misalnya pake Telkomsel atau pake
+XL atau apa itu mah nggak ada yang bisa ngatur kan itu mah.
+Kecuali di permission set nya dikasih
+condition tadi mas Anang. Di permission set nya di set condition,
+kalau IPnya bukan IPnya VPN Permata gak boleh.
+Itu IPPRES bisa
+di taruh di situ ya? Bisa.
+Itu di permission set kasih source nya
+free aja kali ya gitu ya? Kalo kan permission cap
+Iya dicek networking Permata
+itu segede apa tapi mesti lihat pasti ada batasnya jumlahnya
+ya nggak bisa ya saya kerja berapa saya nggak diam mesti di summarize masalah
+Disummarize
+10 titik berapa gitu? 10 titik nol nol.8 misalnya
+itu kan berarti udah pasti udah di om prem dong, bener nggak? Maksudnya
+itu pasti private nggak mungkin dari internet kan kalau itu
+Tapi IPnya IP
+drill keluarnya IPnya IP publik atau IP
+private ya kalau IP private nggak bisa dibatasi kalau IPP public bisa
+Oh jadi dia tuh deny ya? Jadi denyigh glitch ya?
+Dong. Jadi dia denyigh
+actionnya denyai tapi conditionnya adalah kalau not
+apa gitu? Oh, Deny
+denyai color not all berarti kalau denyai not
+berarti musti private ariid dong di Karonope
+masalahnya Pak Suprap IT tidak berlaku policy nya
+terus bentuk apa jadinya tuh tunggu ya I nice not public public IP jadi public IP nya
+kalo biasanya ya public IP proxynya si Permata
+Oh, oke berarti dia
+Dia pasti dapat
+Iya kan misalnya slends 32 gitu misalnya atau slice
+berapa 30 lah misalnya slash 30 pasti kamu slash gak
+nggak tahu nah SS30 nah berarti itu yang kita kunci masalah
+lu. Dicek dulu di platreo dapatnya
+ya itu mesti dicek perhatikan jadinya masalah
+ya. Jadi artinya dia ada
+rules yang namanya di 9 not.
+Not. DINY All Not if it's not IBNers from
+mana gitu. Nah itu kan di denyy. Berarti kan
+tapi menurut grow itu nggak bisa kalau yang private
